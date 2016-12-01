@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- this is similar to inheritance (extends template.xhtml) -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/template.xhtml">
+
+  <ui:define name="content">
+    <br/>
+    <p:panel header="Bienvenido" style="font-size:14px;">
+      <h:panelGrid columns="2" id="detalles" cellpadding="6">        
+        <h:form>
+          <p:inputText value="#{producto.desc}"></p:inputText>&nbsp;
+          <p:commandButton value="Submit" />
+        </h:form>              
+      </h:panelGrid>
+    </p:panel>    
+  </ui:define>
+
+</ui:composition>

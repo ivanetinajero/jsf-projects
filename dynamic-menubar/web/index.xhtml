@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- this is similar to inheritance (extends template.xhtml) -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/templates/template.xhtml">
+
+  <ui:define name="content">
+    <br/>
+    <p:panel header="Bienvenido" style="font-size:14px;">
+      <h:panelGrid columns="2" id="detalles" cellpadding="6">        
+        <h:outputLabel value="Usuario: " />               
+      </h:panelGrid>
+    </p:panel>
+    <br/>
+    <p:panel id="sports" header="¡¡ Atención !!" rendered="true">  
+      <center>
+        <h:outputText value="Para utilizar el sistema es necesario que cambie su password." />  <br></br>
+        <h:outputText value="Haga clic en el menu Sistema para cambiar su password." />  <br></br>
+        <h:graphicImage value="resources/img/lock.png" />
+      </center>
+    </p:panel>
+    
+  </ui:define>
+
+</ui:composition>

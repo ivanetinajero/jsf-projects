@@ -1,0 +1,11 @@
+.ui-selectonemenu {   
+   min-width: 100px !important;   
+}
+
+input.filterTxt{
+    width:120px;
+}
+
+.dateTimeField input {
+   width:120px ;
+}
