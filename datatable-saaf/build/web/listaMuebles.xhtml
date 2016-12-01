@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <title>Listado de muebles</title>
+  </h:head>
+  <h:body>
+    <h:form id="form">      
+      
+      <table>
+        <tr>
+          <td>Etiqueta:</td>
+          <td>
+            <h:inputText label="Etiqueta" 
+                         id="etiqueta" value="#{muebles.etiqueta}"                        
+                         requiredMessage="Please. Provide a brand"
+                         required="false"/>
+            <h:message for="etiqueta" />
+          </td>
+        </tr>
+      </table>
+      <p><h:commandButton value="Buscar" action="#{muebles.search}" /></p>
+      
+      
+      <h:commandLink>
+        <p:graphicImage value="/resources/img/excel.png" />
+        <p:dataExporter type="xls" target="muebleTable" fileName="mueblexls" pageOnly="false" />
+      </h:commandLink>
+           
+      <p:dataTable paginatorPosition="bottom" var="mueble" value="#{muebles.listaMuebles}" paginator="true" rows="10"
+                   sortField="idMueble"
+                   sortOrder="descending"
+                   resizableColumns="true"
+                   style="font-size:13px;"
+                   paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                   rowsPerPageTemplate="5,10,15" id="muebleTable" lazy="true">                  
+
+        <p:column headerText="Id" >
+          <h:outputText value="#{mueble.id}" />
+        </p:column>
+        <p:column headerText="Dependencia" sortBy="#{mueble.activo.dependencia.nombre}">
+          <h:outputText value="#{mueble.activo.dependencia.dependencia}" />
+        </p:column>
+        <p:column headerText="Direccion" >
+          <h:outputText value="#{mueble.activo.dependencia.direccion}" />
+        </p:column>
+        <p:column headerText="Etiqueta" sortBy="#{mueble.etiqueta}">
+          <h:outputText value="#{mueble.etiqueta}" />
+        </p:column>
+        <p:column headerText="Descripcion" sortBy="#{mueble.descripcion}">
+          <h:outputText value="#{mueble.descripcion}" />
+        </p:column>
+        <p:column headerText="Clasificacion" sortBy="#{mueble.clasificacion.nombre}">
+          <h:outputText value="#{mueble.clasificacion.nombre}" />
+        </p:column>
+        <p:column headerText="Oficina" sortBy="#{mueble.oficina.nombre}">
+          <h:outputText value="#{mueble.oficina.nombre}" />
+        </p:column>
+        <p:column headerText="Estatus" sortBy="#{mueble.estatus.nombre}">
+          <h:outputText value="#{mueble.estatus.nombre}" />
+        </p:column>
+        <p:column headerText="No.Resguardo" >
+          <h:outputText value="#{mueble.detResg.resguardo.id}" />
+        </p:column>
+        
+        <p:column headerText="Resguardante" >
+          <h:outputText value="#{mueble.detResg.resguardo.resguardante}" />
+        </p:column>
+       
+        <p:column headerText="Factura" sortBy="#{mueble.factura}">
+          <h:outputText value="#{mueble.factura}" />
+        </p:column>
+        <f:facet name="footer">
+          In total there are #{muebles.listaMuebles.rowCount} muebles.
+        </f:facet>
+      </p:dataTable>
+     
+    </h:form>
+  </h:body>
+</html>
+

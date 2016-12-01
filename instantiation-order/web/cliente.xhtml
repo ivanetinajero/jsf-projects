@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+  <title>A Simple JavaServer Faces Registration Application</title>
+</h:head>
+<h:body>
+  <h:form>    
+    <h4>Alta de clientes</h4>
+    <table>
+      <tr>
+        <td>Nombre:</td>
+        <td>
+          <h:inputText id="nombre" value="#{bean.cliente.nombre}"                        
+                       requiredMessage="Por favor escriba el nombre"
+                       required="true"/>
+          <h:message for="nombre" />
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <h:inputText id="email" value="#{bean.cliente.email}"
+                       requiredMessage="Por favor escriba el correo."
+                       required="true"/>
+          <h:message for="email" />
+        </td>
+      </tr>  
+      <tr>
+        <td>Edad:</td>
+        <td>
+          <h:inputText id="edad" value="#{bean.cliente.age}"
+                       required="true"/>
+          <h:message for="edad" />
+        </td>
+      </tr>  
+      <tr>
+        <td>Pais:</td>
+        <td>
+          <h:inputText id="pais" value="#{bean.pais.nombre}"
+                       required="true"/>
+          <h:message for="pais" />
+        </td>
+      </tr>  
+      </table>
+    <p><h:commandButton value="Guardar" action="#{bean.save}" /></p>
+  </h:form>
+</h:body>
+</html>

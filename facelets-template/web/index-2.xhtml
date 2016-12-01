@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- this is similar to inheritance (extends template.xhtml) -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="templates/template.xhtml">
+
+  <ui:define name="left">
+    The left region is also overwritten
+  </ui:define>
+
+  <ui:define name="content">
+    Here we are overwriting the default content
+
+    <h:form>
+      <h:inputText size="5"/>&nbsp;
+      <h:commandButton value="Send" action="x" />
+    </h:form>
+
+  </ui:define>
+
+</ui:composition>

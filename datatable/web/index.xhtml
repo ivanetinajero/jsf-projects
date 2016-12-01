@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <title>Facelet Title</title>
+  </h:head>
+  <h:body>
+    <h:form id="form">      
+      
+      <table>
+        <tr>
+          <td>Brand:</td>
+          <td>
+            <h:inputText label="Brand" 
+                         id="brand" value="#{dtLazyView.brand}"                        
+                         requiredMessage="Please. Provide a brand"
+                         required="true"/>
+            <h:message for="brand" />
+          </td>
+        </tr>
+      </table>
+      <p><h:commandButton value="Register" action="#{dtLazyView.search}" /></p>
+      
+      
+      <h:commandLink>
+        <p:graphicImage value="/resources/img/excel.png" />
+        <p:dataExporter type="xls" target="carTable" fileName="carsxls" pageOnly="false" />
+      </h:commandLink>
+      
+      <h:commandLink>
+        <p:graphicImage value="/resources/img/csv.png" />
+        <p:dataExporter type="csv" target="carTable" fileName="carscsv" pageOnly="false" />
+      </h:commandLink>
+      
+      <h:commandLink>
+        <p:graphicImage value="/resources/img/pdf.png" />
+        <p:dataExporter type="pdf" target="carTable" fileName="carspdf" pageOnly="false" />
+      </h:commandLink>
+      
+      <p:dataTable paginatorPosition="bottom" var="car" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                   paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                   rowsPerPageTemplate="5,10,15" id="carTable" lazy="true">                  
+        <!--
+        <f:facet name="header">
+            List of Cars
+            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+            <p:columnToggler datasource="carTable" trigger="toggler" />
+        </f:facet>
+        -->
+        <p:column headerText="Id" sortBy="#{car.id}">
+          <h:outputText value="#{car.id}" />
+        </p:column>
+        <p:column headerText="Description" sortBy="#{car.description}">
+          <h:outputText value="#{car.description}" />
+        </p:column>
+        <p:column headerText="Year" sortBy="#{car.year}">
+          <h:outputText value="#{car.year}" />
+        </p:column>
+        <p:column headerText="Brand" sortBy="#{car.brand}">
+          <h:outputText value="#{car.brand}" />
+        </p:column>
+        <p:column headerText="Color" sortBy="#{car.color}">
+          <h:outputText value="#{car.color}" />
+        </p:column>
+        <f:facet name="footer">
+          In total there are #{dtLazyView.lazyModel.rowCount} cars.
+        </f:facet>
+      </p:dataTable>
+     
+    </h:form>
+  </h:body>
+</html>
+

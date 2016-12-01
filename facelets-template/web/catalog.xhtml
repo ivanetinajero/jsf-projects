@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- this is similar to inheritance (extends template.xhtml) -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="templates/bootstrap.xhtml">
+
+  <ui:define name="jumbotron">
+
+  </ui:define>
+
+  <ui:define name="content">
+    
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">List of products</div>
+      <div class="panel-body">
+        <!-- Table -->
+        <h:dataTable value="#{catalog.products}" var="p"
+            styleClass="table table-striped">
+            <h:column>    				
+               <f:facet name="header">Id</f:facet>    				
+               #{p.id}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Description</f:facet>
+               #{p.description}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Cost</f:facet>
+               #{p.cost}
+            </h:column>
+            <h:column>
+               <f:facet name="header">Stock</f:facet>
+               #{p.stock}
+            </h:column>
+         </h:dataTable>        
+      </div>
+    </div>
+    
+  </ui:define>
+
+</ui:composition>

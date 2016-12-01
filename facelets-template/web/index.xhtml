@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- this is similar to inheritance (extends template.xhtml) -->
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="templates/bootstrap.xhtml">
+
+  <ui:define name="jumbotron">
+    <div class="jumbotron">
+      <h1>Welcome</h1>
+      <p>You can write a welcome message here</p>
+      <p>
+        <a class="btn btn-lg btn-primary" href="#" role="button">Sign-in &raquo;</a>
+      </p>
+    </div>
+  </ui:define>
+
+  <ui:define name="content">
+  </ui:define>
+
+</ui:composition>
