@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+  <script type="text/javascript">
+     function exportChart(widgetVar) {
+        //export image
+        $('#output').empty().append(PF(widgetVar).exportAsImage());
+
+        //show the dialog
+        PF('dlg').show();
+     }
+  </script>
+  <h:head>
+    <title>Demo Charts</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <p:growl id="growl" showDetail="true" sticky="true" />  
+      <p:poll interval="5" listener="#{chartView.refresh}" update="votes,growl"/>
+      <p:panelGrid columns="2" layout="grid" style="font-size:14px;" > 
+        <p:panel id="chart1" header="Gráfica 1">
+          <p:chart id="votes" type="bar" model="#{chartView.barModel}" widgetVar="barChart"/>
+          <p:commandButton type="button" value="Exportar" icon="ui-icon-extlink" onclick="exportChart('barChart')"/>
+        </p:panel>
+        <p:panel id="chart2" header="Gráfica 2">
+          <p:chart type="line" model="#{chartView.lineModel}" style="height:300px;" widgetVar="lineChart"/>
+          <p:commandButton type="button" value="Exportar" icon="ui-icon-extlink" onclick="exportChart('lineChart')"/>
+        </p:panel>
+        <!--
+        <p:panel id="chart3" header="Sports">
+          <h:outputText value="Content" /> 
+        </p:panel>
+        <p:panel id="chart4" header="Sports">
+          <h:outputText value="Content" /> 
+        </p:panel>        
+        -->
+      </p:panelGrid>
+    </h:form>
+    <p:dialog style="font-size:14px;" widgetVar="dlg" showEffect="fade" modal="true" header="Exportar como imagen" resizable="false">
+      <p:outputPanel id="output" layout="block" />
+    </p:dialog>
+  </h:body>
+</html>
+
